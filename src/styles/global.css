@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #007ced;
+  --color-primary-hover: #007ced;
+  --color-grey: #868686;
+}
+
+/* You can also define additional variations if needed */
+:root {
+  --color-primary-light: #3399f0;
+  --color-primary-dark: #005bb5;
+}
+

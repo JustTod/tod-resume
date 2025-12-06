@@ -1,0 +1,146 @@
+---
+import Item from './Item.astro';
+import Title from './Title.astro';
+
+const experiences = [
+  {
+    company: 'BMW Leasing Thailand',
+    dates: 'Feb 2024 - Present',
+    jobTitle: 'BUSINESS ANALYST | PROJECT MANAGER | DEVOPS ENGINEER',
+    description:
+      'Be an IT representative to align the business requirement with the development team on a global solution. Improve the workflow and patching security and lead vendor on a local application.',
+    projects: [
+      {
+        title:
+          'Contributed to the IFRS9 resolution deployment,  reducing delinquency by nearly 60%, using my technical expertise to review the solution, accelerating implementation by a month.',
+      },
+      {
+        title:
+          'Involved in Credit scoring implementation, which followed Bank of Thailand (BOT) standards. Translated complex business requirements into clear technical instructions for developers, enabling them to complete development within a week.',
+      },
+      {
+        title:
+          'Planned and estimated a project’s timeline for the crucial EKYC project in the new business department, ensuring timely delivery by guiding the vendor with technical expertise. and optimized cloud services, reducing costs by approximately 30% per month.',
+      },
+      {
+        title:
+          'Implemented an automated deployment process to cut daily deployment time by 80%.',
+      },
+      {
+        title:
+          'Streamlined operations by documenting processes and training the maintenance vendor to work independently, saving the team’s members at least 30 minutes per week',
+      },
+    ],
+  },
+  {
+    company: 'DELTA DYNAMIC THAILAND',
+    dates: 'Mar 2023 - Jan 2024',
+    jobTitle: 'PROJECT MANAGER | FULLSTACK DEVELOPER',
+    description:
+      'Working with a British start-up tech transformation company, which has a client around the globe. Mainly, apply technology tools, such as Salesforce, Sendbird and more to suit customer needs.',
+    projects: [
+      {
+        title:
+          'Served as the primary liaison between the client and our development team, managing negotiations and breaking down customer requests into smaller tasks to fit into a 2-week sprint instead of a monthly or quarterly release. Also utilized transparent project management tools like Jira to maintain clear alignment with the customer.',
+      },
+      {
+        title:
+          'Developed a comprehensive reporting system using AWS Athena and Amazon QuickSight to provide stakeholders with real-time insights and analytics.',
+      },
+      {
+        title:
+          'Coordinated between the client and subvendor to optimize resource management, performing task breakdowns to effectively manage costs, and reducing outsourced man-day expenses by at least 20%',
+      },
+    ],
+  },
+  {
+    company: 'FORVIZ',
+    dates: 'Dec 2020 - Feb 2023',
+    jobTitle: 'PROJECT MANAGER | FULLSTACK DEVELOPER',
+    description:
+      'In late 2020, I worked across all aspects of software development, from gathering customer requirements as a BA to project planning, then coding and including selecting the technical stack of the upcoming project',
+    projects: [
+      {
+        title: 'Building Facility Project',
+        accomplishments: [
+          'Created a website mockup and converted it into a wireframe, streamlining customer approvals for a contract worth over a million Baht while reducing designer workload by approximately 50% compared to regular projects.',
+          'Facilitated customer meetings by providing clear options, guiding discussions to ensure alignment, and documenting meeting minutes to help conclude meetings within the set timeframe.',
+        ],
+      },
+      {
+        title: 'Finance Calculation Project',
+        accomplishments: [
+          'Implemented AWS EventBridge and a serverless architecture to automate report generation for customers, eliminating the need for manually assigning tasks to developers daily.',
+          'Developed a customer website with a React and Material UI frontend, leveraging TypeScript and a serverless backend',
+          "Stepped in during a client event after an administrator's accident, I took over critical tasks to ensure smooth operations, prevent disruptions, and save my coworkers valuable time by using Jira to centralize all accidents.",
+        ],
+      },
+    ],
+  },
+  {
+    company: 'Moreloop',
+    dates: 'Aug 2019 - Nov 2020',
+    jobTitle: 'JUNIOR PROJECT MANAGER',
+    description:
+      'Environment is what I focus on. Moreloop is an eco-friendly start-up with the main idea of circularising the surplus fabric left all over the garment factory in Thailand. This job opportunity has provided me with business logic and management skills.',
+    projects: [
+      {
+        title:
+          "Designed a supply chain-style workflow to automate and streamline the process of pushing over 200 SKUs to the startup's website each month, ensuring efficiency and consistency.",
+      },
+      {
+        title:
+          'Developed an inventory system to help the company organize and categorize products efficiently, reducing shipping time by at least one day',
+      },
+    ],
+  },
+];
+---
+
+<section class="item-list">
+  <div class="item-list-container">
+    <Title title="Experiences" />
+    <div class="item-list-items">
+      {
+        experiences.map((experience) => (
+          <Item
+            company={experience.company}
+            dates={experience.dates}
+            jobTitle={experience.jobTitle}
+            description={experience.description}
+            projects={experience.projects}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .item-list {
+    padding: 4rem 0;
+    background-color: #fffffe;
+  }
+
+  .item-list-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .item-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .item-list {
+      padding: 2rem 1rem;
+    }
+
+    .item-list-title {
+      font-size: 2rem;
+    }
+  }
+</style>

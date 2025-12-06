@@ -1,0 +1,55 @@
+---
+import Tag from './Tag.astro';
+import Title from './Title.astro';
+
+const tags = [
+  {
+    label: 'Scrum',
+  },
+  {
+    label: 'Agile',
+  },
+  {
+    label: 'Jira',
+  },
+  {
+    label: 'Project Planning',
+  },
+  {
+    label: 'Notion',
+  },
+  {
+    label: 'HTML',
+  },
+  {
+    label: 'CSS',
+  },
+  {
+    label: 'Typescript',
+  },
+  {
+    label: 'Serverless',
+  },
+  {
+    label: 'AWS',
+  },
+  {
+    label: 'Github Actions',
+  },
+  {
+    label: 'Terragrunt',
+  },
+];
+---
+
+<div class="tag-list">
+  <Title title="Skills" />
+  {tags.map((tag) => <Tag label={tag.label} />)}
+</div>
+
+<style>
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+</style>

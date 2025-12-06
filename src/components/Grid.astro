@@ -1,0 +1,173 @@
+---
+import Title from './Title.astro';
+
+interface EducationItem {
+  degree: string;
+  institution: string;
+  year: string;
+}
+
+interface CertificationItem {
+  name: string;
+  year: string;
+}
+
+interface Props {
+  education?: EducationItem[];
+  certifications?: CertificationItem[];
+}
+
+const { education = [], certifications = [] } = Astro.props;
+
+const defaultEducation: EducationItem[] = [
+  {
+    degree: 'Bachelor Degree in Computer Science',
+    institution: 'Thammasat University',
+    year: '2015',
+  },
+];
+
+const defaultCertifications: CertificationItem[] = [
+  {
+    name: 'Cloud Native Associate [Jumpbox Academy]',
+    year: '2023',
+  },
+  {
+    name: 'Professional Scrum Master I',
+    year: '2022',
+  },
+];
+
+const educationData = education.length > 0 ? education : defaultEducation;
+const certificationsData =
+  certifications.length > 0 ? certifications : defaultCertifications;
+---
+
+<div class="grid-container">
+  <div class="grid-top-line"></div>
+  <div class="grid">
+    <div class="grid-item">
+      <div class="grid-title-wrapper">
+        <Title title="EDUCATION" />
+      </div>
+      <div class="grid-content">
+        {
+          educationData.map((item) => (
+            <div class="grid-entry">
+              <div class="grid-entry-title">{item.degree}</div>
+              <div class="grid-entry-detail">{item.institution}</div>
+              <div class="grid-entry-detail">{item.year}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="grid-divider"></div>
+    <div class="grid-item">
+      <div class="grid-title-wrapper">
+        <Title title="CERTIFICATION" />
+      </div>
+      <div class="grid-content">
+        {
+          certificationsData.map((item) => (
+            <div class="grid-entry">
+              <div class="grid-entry-title">{item.name}</div>
+              <div class="grid-entry-detail">{item.year}</div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .grid-container {
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  .grid-top-line {
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    display: flex;
+    width: 100%;
+    gap: 0;
+  }
+
+  .grid-item {
+    flex: 1;
+    padding: 0 1.5rem;
+  }
+
+  .grid-divider {
+    width: 1px;
+    background-color: #000000;
+    margin: 0;
+  }
+
+  .grid-title-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .grid-title-wrapper :global(.title-container) {
+    max-width: none;
+    margin: 0;
+  }
+
+  .grid-title-wrapper :global(.item-list-title) {
+    font-size: 1.25rem;
+    color: #000000;
+    margin: 0 0 0 0;
+    text-transform: uppercase;
+  }
+
+  .grid-title-wrapper :global(.item-list-underline) {
+    display: none;
+  }
+
+  .grid-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .grid-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .grid-entry-title {
+    font-weight: 700;
+    color: #000000;
+    font-size: 0.9375rem;
+  }
+
+  .grid-entry-detail {
+    font-weight: 400;
+    color: #000000;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      flex-direction: column;
+    }
+
+    .grid-divider {
+      width: 100%;
+      height: 1px;
+      margin: 1rem 0;
+    }
+
+    .grid-item {
+      padding: 0;
+    }
+  }
+</style>

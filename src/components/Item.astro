@@ -1,0 +1,155 @@
+---
+interface Project {
+  title: string;
+  accomplishments?: string[];
+}
+
+interface Props {
+  company: string;
+  dates: string;
+  jobTitle: string;
+  description: string;
+  projects?: Project[];
+}
+
+const { company, dates, jobTitle, description, projects = [] } = Astro.props;
+---
+
+<div class="item">
+  <details>
+    <summary>
+      <div class="item-header">
+        <div class="item-company-container">
+          <img src="/img/plus.svg" alt="plus" class="item-plus-icon" />
+          <h3 class="item-company">{company}</h3>
+          <span class="item-job-title">{jobTitle}</span>
+        </div>
+        <span class="item-dates">{dates}</span>
+      </div>
+    </summary>
+    <p class="item-description">{description}</p>
+    {
+      projects.length > 0 && (
+        <ul class="item-projects">
+          {projects.map((project) => (
+            <li class="item-project">
+              <span
+                class={`item-project-title ${project.accomplishments ? 'highlight' : ''}`}
+              >
+                {project.title}
+              </span>
+              <ul class="item-accomplishments">
+                {project.accomplishments?.map((accomplishment) => (
+                  <li class="item-accomplishment">{accomplishment}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </details>
+</div>
+
+<style>
+  .item {
+    margin-bottom: 2rem;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .item-plus-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .item-plus-icon {
+    transform: rotate(45deg);
+  }
+
+  .item-company-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .item-company {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .item-dates {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .item-job-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000000;
+    text-transform: uppercase;
+    margin-left: 0.5rem;
+  }
+
+  .item-description {
+    font-size: 0.9375rem;
+    color: #000000;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+  }
+
+  .item-projects {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+  }
+
+  .item-project {
+    margin-bottom: 0.75rem;
+  }
+
+  .item-project-title {
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .item-project-title.highlight {
+    font-weight: 700;
+  }
+
+  .item-accomplishments {
+    list-style-type: circle;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .item-accomplishment {
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+  }
+</style>

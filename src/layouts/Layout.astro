@@ -1,3 +1,7 @@
+---
+import '../styles/global.css';
+---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +12,9 @@
     <title>Todsaporn Wattanaiabpan</title>
   </head>
   <body>
-    <slot />
+    <div class="content-wrapper">
+      <slot />
+    </div>
   </body>
 </html>
 
@@ -50,11 +56,6 @@
     font-style: normal;
   }
 
-  :global(:root) {
-    --color-primary: #0160b8;
-    --color-primary-hover: #007ced;
-  }
-
   html,
   body {
     margin: 0;
@@ -62,6 +63,14 @@
     height: 100%;
     font-family: 'SukhumvitSet', sans-serif;
     background-color: #fffffe;
+  }
+
+  .content-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    box-sizing: border-box;
   }
 
   :global(a) {
