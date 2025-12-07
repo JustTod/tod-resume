@@ -43,13 +43,34 @@ const tags = [
 ---
 
 <div class="tag-list">
-  <Title title="Skills" />
-  {tags.map((tag) => <Tag label={tag.label} />)}
+  <div class="tag-list-container">
+    <Title title="Skills" />
+    <div class="tag-list-tags">
+      {tags.map((tag) => <Tag label={tag.label} />)}
+    </div>
+  </div>
 </div>
 
 <style>
   .tag-list {
+    padding: 4rem 0;
+    background-color: #fffffe;
+  }
+
+  .tag-list-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .tag-list-tags {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .tag-list {
+      padding: 2rem 1rem;
+    }
   }
 </style>

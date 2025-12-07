@@ -44,38 +44,40 @@ const certificationsData =
 ---
 
 <div class="grid-container">
-  <div class="grid-top-line"></div>
-  <div class="grid">
-    <div class="grid-item">
-      <div class="grid-title-wrapper">
-        <Title title="EDUCATION" size="small" />
+  <div class="grid-container-wrapper">
+    <div class="grid-top-line"></div>
+    <div class="grid">
+      <div class="grid-item">
+        <div class="grid-title-wrapper">
+          <Title title="EDUCATION" size="small" />
+        </div>
+        <div class="grid-content">
+          {
+            educationData.map((item) => (
+              <div class="grid-entry">
+                <div class="grid-entry-title">{item.degree}</div>
+                <div class="grid-entry-detail">{item.institution}</div>
+                <div class="grid-entry-detail">{item.year}</div>
+              </div>
+            ))
+          }
+        </div>
       </div>
-      <div class="grid-content">
-        {
-          educationData.map((item) => (
-            <div class="grid-entry">
-              <div class="grid-entry-title">{item.degree}</div>
-              <div class="grid-entry-detail">{item.institution}</div>
-              <div class="grid-entry-detail">{item.year}</div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    <div class="grid-divider"></div>
-    <div class="grid-item">
-      <div class="grid-title-wrapper">
-        <Title title="CERTIFICATION" size="small" />
-      </div>
-      <div class="grid-content">
-        {
-          certificationsData.map((item) => (
-            <div class="grid-entry">
-              <div class="grid-entry-title">{item.name}</div>
-              <div class="grid-entry-detail">{item.year}</div>
-            </div>
-          ))
-        }
+      <div class="grid-divider"></div>
+      <div class="grid-item">
+        <div class="grid-title-wrapper">
+          <Title title="CERTIFICATION" size="small" />
+        </div>
+        <div class="grid-content">
+          {
+            certificationsData.map((item) => (
+              <div class="grid-entry">
+                <div class="grid-entry-title">{item.name}</div>
+                <div class="grid-entry-detail">{item.year}</div>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
@@ -83,8 +85,14 @@ const certificationsData =
 
 <style>
   .grid-container {
+    padding: 4rem 0;
+    background-color: #fffffe;
+  }
+
+  .grid-container-wrapper {
+    max-width: 1200px;
     width: 100%;
-    margin: 2rem 0;
+    margin: 0 auto;
   }
 
   .grid-top-line {
@@ -92,6 +100,10 @@ const certificationsData =
     height: 1px;
     background-color: #000000;
     margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .grid {
@@ -103,12 +115,20 @@ const certificationsData =
   .grid-item {
     flex: 1;
     padding: 0 1.5rem;
+
+    @media (max-width: 768px) {
+      margin: 1rem 0;
+    }
   }
 
   .grid-divider {
     width: 1px;
     background-color: #000000;
     margin: 0;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   .grid-title-wrapper {
@@ -140,6 +160,10 @@ const certificationsData =
   }
 
   @media (max-width: 768px) {
+    .grid-container {
+      padding: 2rem 1rem;
+    }
+
     .grid {
       flex-direction: column;
     }
