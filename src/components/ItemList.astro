@@ -99,7 +99,10 @@ const experiences = [
 
 <section class="item-list">
   <div class="item-list-container">
-    <Title title="Experiences" />
+    <div class="item-list-header">
+      <Title title="Experiences" />
+      <button class="expand-all-btn" id="expand-all-btn">Expand All</button>
+    </div>
     <div class="item-list-items">
       {
         experiences.map((experience) => (
@@ -116,6 +119,25 @@ const experiences = [
   </div>
 </section>
 
+<script>
+  const expandAllBtn = document.getElementById('expand-all-btn');
+  const detailsElements = document.querySelectorAll<HTMLDetailsElement>(
+    '.item-list-items details'
+  );
+  let allExpanded = false;
+
+  expandAllBtn?.addEventListener('click', () => {
+    allExpanded = !allExpanded;
+
+    detailsElements.forEach((details) => {
+      details.open = allExpanded;
+    });
+
+    expandAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+    expandAllBtn.classList.toggle('collapsed', allExpanded);
+  });
+</script>
+
 <style>
   .item-list {
     padding: 4rem 0;
@@ -128,6 +150,29 @@ const experiences = [
     margin: 0 auto;
   }
 
+  .item-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .expand-all-btn {
+    padding: 0.5rem 1rem;
+    color: var(--color-primary);
+    background-color: transparent;
+    border-radius: 0.25rem;
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .expand-all-btn.collapsed {
+    color: #ffffff;
+    background-color: var(--color-primary);
+  }
+
   .item-list-items {
     display: flex;
     flex-direction: column;
@@ -137,6 +182,17 @@ const experiences = [
   @media (max-width: 768px) {
     .item-list {
       padding: 2rem 1rem;
+    }
+
+    .item-list-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .expand-all-btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
     }
 
     .item-list-title {
