@@ -48,7 +48,7 @@ const certificationsData =
   <div class="grid">
     <div class="grid-item">
       <div class="grid-title-wrapper">
-        <Title title="EDUCATION" />
+        <Title title="EDUCATION" size="small" />
       </div>
       <div class="grid-content">
         {
@@ -65,7 +65,7 @@ const certificationsData =
     <div class="grid-divider"></div>
     <div class="grid-item">
       <div class="grid-title-wrapper">
-        <Title title="CERTIFICATION" />
+        <Title title="CERTIFICATION" size="small" />
       </div>
       <div class="grid-content">
         {
@@ -115,22 +115,6 @@ const certificationsData =
     margin-bottom: 1rem;
   }
 
-  .grid-title-wrapper :global(.title-container) {
-    max-width: none;
-    margin: 0;
-  }
-
-  .grid-title-wrapper :global(.item-list-title) {
-    font-size: 1.25rem;
-    color: #000000;
-    margin: 0 0 0 0;
-    text-transform: uppercase;
-  }
-
-  .grid-title-wrapper :global(.item-list-underline) {
-    display: none;
-  }
-
   .grid-content {
     display: flex;
     flex-direction: column;
@@ -146,13 +130,13 @@ const certificationsData =
   .grid-entry-title {
     font-weight: 700;
     color: #000000;
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   .grid-entry-detail {
     font-weight: 400;
     color: #000000;
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
