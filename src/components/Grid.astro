@@ -10,6 +10,7 @@ interface EducationItem {
 interface CertificationItem {
   name: string;
   year: string;
+  link?: string;
 }
 
 interface Props {
@@ -31,10 +32,12 @@ const defaultCertifications: CertificationItem[] = [
   {
     name: 'Cloud Native Associate [Jumpbox Academy]',
     year: '2023',
+    link: 'https://www.credly.com/badges/3e4d0392-c5f8-4a9f-9548-59e6f789a9b0',
   },
   {
     name: 'Professional Scrum Master I',
     year: '2022',
+    link: 'https://www.credly.com/badges/583e1dcc-3534-4b4c-9ac5-87f668088cad',
   },
 ];
 
@@ -72,7 +75,9 @@ const certificationsData =
           {
             certificationsData.map((item) => (
               <div class="grid-entry">
-                <div class="grid-entry-title">{item.name}</div>
+                <a href={item.link} target="_blank">
+                  <div class="grid-entry-title link">{item.name}</div>
+                </a>
                 <div class="grid-entry-detail">{item.year}</div>
               </div>
             ))
@@ -151,6 +156,16 @@ const certificationsData =
     font-weight: 700;
     color: #000000;
     font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .grid-entry-title.link {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      color: var(--color-primary);
+      text-decoration-color: var(--color-primary);
+    }
   }
 
   .grid-entry-detail {
