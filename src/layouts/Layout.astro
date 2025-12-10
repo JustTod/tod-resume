@@ -10,6 +10,49 @@ import '../styles/global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>Todsaporn Wattanaiabpan</title>
+    <script>
+      // Detect system theme preference and apply dark mode
+      (function () {
+        const getTheme = () => {
+          // Check localStorage first
+          const stored = localStorage.getItem('theme');
+          if (stored) {
+            return stored;
+          }
+          // Fall back to system preference
+          return window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        };
+
+        const applyTheme = (theme: string) => {
+          document.documentElement.setAttribute('data-theme', theme);
+        };
+
+        // Apply theme on load
+        const theme = getTheme();
+        applyTheme(theme);
+
+        // Listen for system theme changes (only if no manual preference is set)
+        if (!localStorage.getItem('theme')) {
+          window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', (e) => {
+              applyTheme(e.matches ? 'dark' : 'light');
+            });
+        }
+
+        // Expose toggleTheme function globally for theme toggle button
+        // @ts-ignore - Adding custom property to window
+        window.toggleTheme = () => {
+          const currentTheme =
+            document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          applyTheme(newTheme);
+          localStorage.setItem('theme', newTheme);
+        };
+      })();
+    </script>
   </head>
   <body>
     <div class="content-wrapper">
@@ -62,7 +105,11 @@ import '../styles/global.css';
     width: 100%;
     height: 100%;
     font-family: 'SukhumvitSet', sans-serif;
-    background-color: #fffffe;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .content-wrapper {
