@@ -5,7 +5,8 @@ interface Props {
   order?: number;
 }
 
-const { title, size = 'medium', order = 0 } = Astro.props;
+const { title, size = 'medium', order = 1 } = Astro.props;
+const totalOrder = 4;
 ---
 
 <div class="title-container">
@@ -13,11 +14,17 @@ const { title, size = 'medium', order = 0 } = Astro.props;
   <div class={`item-list-underline ${size}`}>
     {
       order > 0 && (
-        <div class="underline-gray" style={`width: ${order * 60}px`} />
+        <div
+          class="underline-highlight"
+          style={`width: ${(order / totalOrder) * 100}%`}
+        />
       )
     }
-    <div class="underline-highlight"></div>
-    <div class="underline-gray last"></div>
+    <div
+      class="underline-gray last"
+      style={`width: ${totalOrder - order * 60}px`}
+    >
+    </div>
   </div>
 </div>
 

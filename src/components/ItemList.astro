@@ -189,7 +189,7 @@ const experiences = [
 <section class="item-list">
   <div class="item-list-container">
     <div class="item-list-header">
-      <Title title="Experiences" />
+      <Title title="Experiences" order={2} />
       <button class="expand-all-btn" id="expand-all-btn">Expand All</button>
     </div>
     <div class="item-list-items">
@@ -240,6 +240,7 @@ const experiences = [
   }
 
   .item-list-header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -248,6 +249,9 @@ const experiences = [
   }
 
   .expand-all-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: 0.5rem 1rem;
     color: var(--color-primary);
     background-color: transparent;
@@ -280,6 +284,7 @@ const experiences = [
     }
 
     .expand-all-btn {
+      position: static;
       width: 100%;
       padding: 0.75rem 1rem;
     }
