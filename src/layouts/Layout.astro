@@ -11,7 +11,7 @@ import '../styles/global.css';
     <meta name="generator" content={Astro.generator} />
     <title>Todsaporn Wattanaiabpan</title>
     <script>
-      // Detect system theme preference and apply dark mode
+      // Default to light theme, but respect user preference if set
       (function () {
         const getTheme = () => {
           // Check localStorage first
@@ -19,10 +19,8 @@ import '../styles/global.css';
           if (stored) {
             return stored;
           }
-          // Fall back to system preference
-          return window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light';
+          // Default to light theme
+          return 'light';
         };
 
         const applyTheme = (theme: string) => {
@@ -32,15 +30,6 @@ import '../styles/global.css';
         // Apply theme on load
         const theme = getTheme();
         applyTheme(theme);
-
-        // Listen for system theme changes (only if no manual preference is set)
-        if (!localStorage.getItem('theme')) {
-          window
-            .matchMedia('(prefers-color-scheme: dark)')
-            .addEventListener('change', (e) => {
-              applyTheme(e.matches ? 'dark' : 'light');
-            });
-        }
 
         // Expose toggleTheme function globally for theme toggle button
         // @ts-ignore - Adding custom property to window
