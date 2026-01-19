@@ -2,6 +2,7 @@
 interface Project {
   title: string;
   accomplishments?: string[];
+  itemType?: 'web' | 'config' | 'app' | 'other';
 }
 
 interface Props {
@@ -13,6 +14,8 @@ interface Props {
 }
 
 import Plus from './svg/plus.astro';
+import Mobile from './svg/mobile.astro';
+import Web from './svg/web.astro';
 
 const { company, dates, jobTitle, description, projects = [] } = Astro.props;
 ---
@@ -41,6 +44,10 @@ const { company, dates, jobTitle, description, projects = [] } = Astro.props;
                 class={`item-project-title ${project.accomplishments ? 'highlight' : ''}`}
               >
                 {project.title}
+                {project.itemType === 'web' && ' (Website based)'}
+                {project.itemType === 'config' && ' (Configuration based)'}
+                {project.itemType === 'other' && ''}
+                {project.itemType === 'app' && ' (Application based)'}
               </span>
               <ul class="item-accomplishments">
                 {project.accomplishments?.map((accomplishment) => (

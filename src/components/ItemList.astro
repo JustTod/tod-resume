@@ -12,6 +12,7 @@ const experiences = [
     projects: [
       {
         title: 'AI OCR Project',
+        itemType: 'web',
         accomplishments: [
           "Reviewed a purpose solution, and security assessment from a vendor to ensure it meets the business's needs.",
           'Documented a requirement and align with Business, in-house development team and vendor. To reduce communication overhead',
@@ -20,6 +21,8 @@ const experiences = [
       },
       {
         title: 'IFRS9 project',
+        itemType: 'config',
+
         accomplishments: [
           'Contributed to the resolution deployment, reducing delinquency by nearly 60%, using my technical expertise to review the solution, accelerating implementation by a month.',
           'Document a change on a Confluence page for a future reference. in case of any future changes or questions.',
@@ -27,6 +30,8 @@ const experiences = [
       },
       {
         title: 'Credit Scoring Project',
+        itemType: 'config',
+
         accomplishments: [
           'Involved in Credit scoring implementation, which followed Bank of Thailand (BOT) standards. Translated complex business requirements into clear technical instructions for developers, enabling them to complete development within a week.',
           'Ensure the change is working as expected by translating a code to communicate with Business owner',
@@ -34,6 +39,7 @@ const experiences = [
       },
       {
         title: 'EKYC project',
+        itemType: 'web',
         accomplishments: [
           'Planned and estimated a project’s timeline for the crucial EKYC project in the new business department, ensuring timely delivery by guiding the vendor with technical expertise.',
           'Optimized cloud services, reducing costs by approximately 30% per month.',
@@ -42,12 +48,24 @@ const experiences = [
       },
       {
         title: 'Finance Calculation Project',
+        itemType: 'web',
         accomplishments: [
           'Implemented an automated deployment process to cut daily deployment time by 80%.',
           'Streamlined operations by documenting processes and training the maintenance vendor to work independently, saving the team’s members at least 30 minutes per week',
           'Negotiated with the vendor to reduce the cost of the project enhancements over half a million baht in total by using a documented system function.',
           'Aware of Regulation of Bank of Thailand (BOT), and then scheduled a meeting with the Business unit to discuss the implementation of the regulation. Using a BRD to document the requirement and the implementation.',
           'Queried a CVE and vulnerabilities then create a ticket to the development team to fix the issue.',
+          'Export a data from the system to a CSV file for a business user to present',
+        ],
+      },
+      {
+        title: 'Other Tasks',
+        itemType: 'other',
+        accomplishments: [
+          'Queried a configuration on Azure and align with Infrastructure team to support the operation.',
+          'Coordinate with the Business user and vendor to get an approval for a project deployment.',
+          "Inspect a AWS configuration when collaborating with the Vendor's Infrastructure team.",
+          'Analyze and query a data from the system for a report and to identify a potential issue and report to the Management.',
         ],
       },
     ],
@@ -61,6 +79,7 @@ const experiences = [
     projects: [
       {
         title: 'Finance Calculation Project',
+        itemType: 'web',
         accomplishments: [
           'Coordinated between the client and subvendor to optimize resource management, performing task breakdowns to effectively manage costs, and reducing outsourced man-day expenses by at least 20%',
           'Performed task breakdowns to effectively manage costs, and reducing outsourced man-day expenses by at least 20%, Using Jira to manage the project and the tasks.',
@@ -70,6 +89,7 @@ const experiences = [
       },
       {
         title: 'Text based game project',
+        itemType: 'web',
         accomplishments: [
           "Worked closely with the product owner to understand the client's needs and goals.",
           'Documented a operation process on Confluence. and coding a script to automate the process.',
@@ -77,8 +97,19 @@ const experiences = [
       },
       {
         title: 'Informative website project',
+        itemType: 'web',
         accomplishments: [
           'Using Low code platform to build the informative website for the client. and connect with the client Salesforce CRM.',
+        ],
+      },
+      {
+        title: 'Crypto Wallet Enhancement Project',
+        itemType: 'App',
+        accomplishments: [
+          'Gathering a requirement from the client and align with the vendor to enhance the crypto wallet application.',
+          'Planning a resource and manage a budget for a project.',
+          'Report a progress in Sprint Review Meeting to ensure the project is on track.',
+          'Align with the client and developer team for a deployment window.',
         ],
       },
     ],
@@ -92,6 +123,7 @@ const experiences = [
     projects: [
       {
         title: 'Building Facility Project',
+        itemType: 'app',
         accomplishments: [
           'Created a website mockup and converted it into a wireframe, streamlining customer approvals for a contract worth over a million Baht while reducing designer workload by approximately 50% compared to regular projects.',
           'Facilitated customer meetings by providing clear options, guiding discussions to ensure alignment, and documenting meeting minutes to help conclude meetings within the set timeframe.',
@@ -99,6 +131,7 @@ const experiences = [
       },
       {
         title: 'Finance Calculation Project',
+        itemType: 'web',
         accomplishments: [
           'Implemented AWS EventBridge and a serverless architecture to automate report generation for customers, eliminating the need for manually assigning tasks to developers daily.',
           'Developed a customer website with a React and Material UI frontend, leveraging TypeScript and a serverless backend',
@@ -107,6 +140,7 @@ const experiences = [
       },
       {
         title: 'Analytics Report Project',
+        itemType: 'app',
         accomplishments: [
           'Conducted a meeting with the client to understand their needs and goals for the analytics report. Then document it to Confluence.',
           "Working the way back from the client's needs to the technical implementation, I was able to deliver a system that met the client's expectations.",
@@ -114,6 +148,7 @@ const experiences = [
       },
       {
         title: 'Customer CMS Website',
+        itemType: 'web',
         accomplishments: [
           'Developed a customer CMS website with a React and SCSS frontend.',
           'Migrated the website content from a legacy CMS to the new built website by using a serverless script.',
@@ -211,7 +246,7 @@ const experiences = [
 <script>
   const expandAllBtn = document.getElementById('expand-all-btn');
   const detailsElements = document.querySelectorAll<HTMLDetailsElement>(
-    '.item-list-items details'
+    '.item-list-items details',
   );
   let allExpanded = false;
 
