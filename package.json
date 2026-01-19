@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.15.5",
-    "motion": "^12.23.24"
+    "motion": "^12.23.24",
+    "radash": "^12.1.1"
   }
 }

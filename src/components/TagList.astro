@@ -1,43 +1,128 @@
 ---
 import Tag from './Tag.astro';
 import Title from './Title.astro';
+import * as _ from 'radash';
 
 const tags = [
   {
     label: 'Scrum',
+    type: 'methodology',
   },
   {
     label: 'Agile',
+    type: 'methodology',
   },
   {
     label: 'Jira',
+    type: 'tool',
   },
   {
     label: 'Project Planning',
+    type: 'skill',
   },
   {
     label: 'Notion',
+    type: 'tool',
   },
   {
     label: 'HTML',
+    type: 'language',
   },
   {
     label: 'CSS',
+    type: 'language',
   },
   {
     label: 'Typescript',
+    type: 'language',
   },
   {
     label: 'Serverless',
+    type: 'language',
   },
   {
     label: 'AWS',
+    type: 'cloud',
   },
   {
     label: 'Github Actions',
+    type: 'tool',
   },
   {
     label: 'Terragrunt',
+    type: 'tool',
+  },
+  {
+    label: 'Python',
+    type: 'language',
+  },
+  {
+    label: 'SQL',
+    type: 'language',
+  },
+  {
+    label: 'MySQL',
+    type: 'Database',
+  },
+  {
+    label: 'PostgreSQL',
+    type: 'Database',
+  },
+  {
+    label: 'MongoDB',
+    type: 'Database',
+  },
+  {
+    label: 'Docker',
+    type: 'tool',
+  },
+  {
+    label: 'Kubernetes',
+    type: 'tool',
+  },
+  {
+    label: 'Terraform',
+    type: 'tool',
+  },
+  {
+    label: 'Azure',
+    type: 'cloud',
+  },
+  {
+    label: 'React',
+    type: 'framework',
+  },
+  {
+    label: 'Next.js',
+    type: 'framework',
+  },
+  {
+    label: 'Tailwind CSS',
+    type: 'framework',
+  },
+  {
+    label: 'Material UI',
+    type: 'framework',
+  },
+  {
+    label: 'AstroJS',
+    type: 'framework',
+  },
+  {
+    label: 'Photoshop',
+    type: 'tool',
+  },
+  {
+    label: 'Task Estimation',
+    type: 'skill',
+  },
+  {
+    label: 'Vendor Management',
+    type: 'skill',
+  },
+  {
+    label: 'Waterfall',
+    type: 'methodology',
   },
 ];
 ---
@@ -46,12 +131,43 @@ const tags = [
   <div class="tag-list-container">
     <Title title="Skills" />
     <div class="tag-list-tags">
-      {tags.map((tag) => <Tag label={tag.label} />)}
+      {
+        _.unique(tags, (tag) => tag.type).map((tag) => (
+          <div class="tag-list-section">
+            <h3 class="tag-list-section-title">{_.capitalize(tag.type)}</h3>
+            <div class="tag-list-section-tags">
+              {tags
+                .filter((t) => t.type === tag.type)
+                .map((t) => (
+                  <Tag label={t.label} />
+                ))}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
 
 <style>
+  .tag-list-section {
+    margin-right: 2rem;
+  }
+
+  .tag-list-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-title);
+    text-decoration: underline;
+    text-decoration-color: var(--color-var);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-var);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    text-decoration-style: solid;
+  }
   .tag-list {
     padding: 4rem 0;
     background-color: var(--bg-color);
