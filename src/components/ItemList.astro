@@ -61,9 +61,9 @@ const experiences = [
         title: 'Other Tasks',
         itemType: 'other',
         accomplishments: [
-          'Queried a appuration on Azure and align with Infrastructure team to support the operation.',
+          'Gather a configuration on Azure and align with Infrastructure team to support the operation.',
           'Coordinate with the Business user and vendor to get an approval for a project deployment.',
-          "Inspect a AWS appuration when collaborating with the Vendor's Infrastructure team.",
+          "Inspect a AWS configuration when collaborating with the Vendor's Infrastructure team.",
           'Analyze and query a data from the system for a report and to identify a potential issue and report to the Management.',
         ],
       },
@@ -234,7 +234,7 @@ const experiences = [
             dates={experience.dates}
             jobTitle={experience.jobTitle}
             description={experience.description}
-            projects={experience.projects}
+            projects={experience.projects || []}
           />
         ))
       }
